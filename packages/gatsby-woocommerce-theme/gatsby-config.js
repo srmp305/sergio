@@ -1,20 +1,20 @@
-module.exports = ({ wordPressUrl, gatsbySiteUrl, googleTagManagerId, fbAppId }) => ({
+module.exports = () => ({
   siteMetadata: {
     title: `Gatsby WooCommerce Theme`,
     description: `Codeytek - Gatsby WooCommerce Theme`,
-	siteUrl: gatsbySiteUrl,
-	wordPressSiteUrl: wordPressUrl,
+	siteUrl: "http://localhost:8000/",
+	wordPressSiteUrl: "https://codeytek.com/wordpress_woo/",
     author: `@imranhsayed`,
-	fbAppId: fbAppId,
+	fbAppId: "",
   },
   plugins: [
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: googleTagManagerId,
-        includeInDevelopment: false,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-tagmanager",
+    //   options: {
+    //     id: googleTagManagerId,
+    //     includeInDevelopment: false,
+    //   },
+    // },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -29,7 +29,7 @@ module.exports = ({ wordPressUrl, gatsbySiteUrl, googleTagManagerId, fbAppId }) 
     {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
-        url: `${wordPressUrl}/graphql`,
+        url: `https://codeytek.com/wordpress_woo/graphql`,
         verbose: true,
         develop: {
           nodeUpdateInterval: 3000,
@@ -64,8 +64,8 @@ module.exports = ({ wordPressUrl, gatsbySiteUrl, googleTagManagerId, fbAppId }) 
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: gatsbySiteUrl,
-        sitemap: `${gatsbySiteUrl}/sitemap.xml`,
+        host: "http://localhost:8000/",
+        sitemap: `http://localhost:8000/sitemap.xml`,
         policy: [{ userAgent: "*", allow: ["/"] }],
       },
     },
